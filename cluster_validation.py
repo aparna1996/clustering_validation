@@ -58,7 +58,7 @@ def nmi(cluster,truth):
 	hc = entropy(cluster)
 	ht = entropy(truth)
 	mutual_info = mutual_information(cluster,truth)
-	return 2*mutual_info/(hc+ht)
+	return mutual_info/math.sqrt(hc*ht)
 
 def jaccard_coefficient(cluster, truth):
 	n = float(len(cluster))
@@ -109,9 +109,11 @@ c3 = read_file('clustering_3.txt')
 c4 = read_file('clustering_4.txt')
 c5 = read_file('clustering_5.txt')
 
-print nmi(c1, truth), jaccard_coefficient(c1, truth)
-print nmi(c2, truth), jaccard_coefficient(c2, truth)
-print nmi(c3, truth), jaccard_coefficient(c3, truth)
-print nmi(c4, truth), jaccard_coefficient(c4, truth)
-print nmi(c5, truth), jaccard_coefficient(c5, truth)
+
+print(nmi(c1, truth), jaccard_coefficient(c1, truth))
+print(nmi(c2, truth), jaccard_coefficient(c2, truth))
+print(nmi(c3, truth), jaccard_coefficient(c3, truth))
+print(nmi(c4, truth), jaccard_coefficient(c4, truth))
+print(nmi(c5, truth), jaccard_coefficient(c5, truth))
+
 
